@@ -1,0 +1,81 @@
+context,question,answer
+Supervised learning is a type of machine learning where the model is trained using labeled data. The goal is to teach the model to make predictions based on known outcomes.," ""What is supervised learning?"""," ""Supervised learning is a type of machine learning where the model is trained using labeled data."""
+Unsupervised learning is a type of machine learning where the model is trained on data without labeled outcomes. It seeks to identify patterns and structures in the data.," ""What is unsupervised learning?"""," ""Unsupervised learning is a type of machine learning where the model is trained on data without labeled outcomes."""
+Reinforcement learning is a machine learning paradigm where agents take actions in an environment to maximize a cumulative reward. It is used for problems where decisions need to be made over time.," ""What is reinforcement learning?"""," ""Reinforcement learning is a machine learning paradigm where agents take actions in an environment to maximize a cumulative reward."""
+Neural networks are computational models inspired by the way biological neural networks in the brain work. They are used to model complex patterns and structures in data.," ""What are neural networks?"""," ""Neural networks are computational models inspired by the way biological neural networks in the brain work."""
+"Multiprogramming in Operating Systems
+
+Multiprogramming allows multiple programs to run simultaneously by switching between them to maximize CPU utilization. While one program is waiting (e.g., for I/O operations), the CPU can execute another program. This ensures the system is efficient and avoids CPU idle time. Examples of multiprogramming in real-world applications include web servers handling multiple user requests at once, banking systems enabling ATMs and online banking to function together, and healthcare systems managing patient data, billing, and inventory simultaneously.
+Disadvantages of Batch Systems
+
+Batch systems process jobs in groups without user interaction. A major disadvantage is that users cannot interact with the job once it’s submitted, which delays changes or corrections. For instance, in payroll systems, urgent updates to employee data cannot be applied immediately. Debugging is another challenge, as errors are only identified after the batch is processed, potentially delaying all tasks. Additionally, these systems may leave resources underutilized when jobs involve slow I/O operations, resulting in idle CPU time.
+Parallel vs. Distributed Systems
+
+Parallel systems involve multiple processors working on a single task simultaneously, often sharing memory and resources within a single system. An example is a supercomputer used for weather forecasting. Distributed systems, on the other hand, consist of independent systems working together over a network to solve problems, such as cloud platforms like AWS or Google Cloud. While parallel systems focus on speed and performance for a single task, distributed systems prioritize resource sharing and handling separate tasks.
+Hard vs. Soft Real-Time Systems
+
+In hard real-time systems, tasks must meet strict deadlines, and missing them can cause catastrophic failures. For example, aircraft control systems must respond instantly to ensure safety. In contrast, soft real-time systems aim to meet deadlines but are more flexible if some delays occur. An example is video streaming, where slight delays may lower quality but do not stop the service altogether.","""Describe the Multiprogramming concept in operating systems.""","""    Running multiple programs simultaneously by switching between them to keep the CPU busy.
+    Example: Browsing, listening to music, and downloading files at the same time."""
+"Multiprogramming in Operating Systems
+
+Multiprogramming allows multiple programs to run simultaneously by switching between them to maximize CPU utilization. While one program is waiting (e.g., for I/O operations), the CPU can execute another program. This ensures the system is efficient and avoids CPU idle time. Examples of multiprogramming in real-world applications include web servers handling multiple user requests at once, banking systems enabling ATMs and online banking to function together, and healthcare systems managing patient data, billing, and inventory simultaneously.
+Disadvantages of Batch Systems
+
+Batch systems process jobs in groups without user interaction. A major disadvantage is that users cannot interact with the job once it’s submitted, which delays changes or corrections. For instance, in payroll systems, urgent updates to employee data cannot be applied immediately. Debugging is another challenge, as errors are only identified after the batch is processed, potentially delaying all tasks. Additionally, these systems may leave resources underutilized when jobs involve slow I/O operations, resulting in idle CPU time.
+Parallel vs. Distributed Systems
+
+Parallel systems involve multiple processors working on a single task simultaneously, often sharing memory and resources within a single system. An example is a supercomputer used for weather forecasting. Distributed systems, on the other hand, consist of independent systems working together over a network to solve problems, such as cloud platforms like AWS or Google Cloud. While parallel systems focus on speed and performance for a single task, distributed systems prioritize resource sharing and handling separate tasks.
+Hard vs. Soft Real-Time Systems
+
+In hard real-time systems, tasks must meet strict deadlines, and missing them can cause catastrophic failures. For example, aircraft control systems must respond instantly to ensure safety. In contrast, soft real-time systems aim to meet deadlines but are more flexible if some delays occur. An example is video streaming, where slight delays may lower quality but do not stop the service altogether.","""Describe how multiprogramming concept is being used in solving real world problems""","""Web servers: Handle multiple user requests.
+Banking systems: ATMs and online banking run together.
+Healthcare systems: Simultaneously manage patient records, billing, and inventory."""
+"Multiprogramming in Operating Systems
+
+Multiprogramming allows multiple programs to run simultaneously by switching between them to maximize CPU utilization. While one program is waiting (e.g., for I/O operations), the CPU can execute another program. This ensures the system is efficient and avoids CPU idle time. Examples of multiprogramming in real-world applications include web servers handling multiple user requests at once, banking systems enabling ATMs and online banking to function together, and healthcare systems managing patient data, billing, and inventory simultaneously.
+Disadvantages of Batch Systems
+
+Batch systems process jobs in groups without user interaction. A major disadvantage is that users cannot interact with the job once it’s submitted, which delays changes or corrections. For instance, in payroll systems, urgent updates to employee data cannot be applied immediately. Debugging is another challenge, as errors are only identified after the batch is processed, potentially delaying all tasks. Additionally, these systems may leave resources underutilized when jobs involve slow I/O operations, resulting in idle CPU time.
+Parallel vs. Distributed Systems
+
+Parallel systems involve multiple processors working on a single task simultaneously, often sharing memory and resources within a single system. An example is a supercomputer used for weather forecasting. Distributed systems, on the other hand, consist of independent systems working together over a network to solve problems, such as cloud platforms like AWS or Google Cloud. While parallel systems focus on speed and performance for a single task, distributed systems prioritize resource sharing and handling separate tasks.
+Hard vs. Soft Real-Time Systems
+
+In hard real-time systems, tasks must meet strict deadlines, and missing them can cause catastrophic failures. For example, aircraft control systems must respond instantly to ensure safety. In contrast, soft real-time systems aim to meet deadlines but are more flexible if some delays occur. An example is video streaming, where slight delays may lower quality but do not stop the service altogether.","""Explain the disadvantages of batch systems with suitable examples""","""No interaction: Users can’t modify jobs once submitted.
+
+    Example: Payroll systems can't handle urgent changes immediately.
+
+Debugging is hard: Errors are found only after processing.
+
+    Example: A bug in one job delays all others.
+
+Wasted resources: Idle time during I/O operations."""
+"Multiprogramming in Operating Systems
+
+Multiprogramming allows multiple programs to run simultaneously by switching between them to maximize CPU utilization. While one program is waiting (e.g., for I/O operations), the CPU can execute another program. This ensures the system is efficient and avoids CPU idle time. Examples of multiprogramming in real-world applications include web servers handling multiple user requests at once, banking systems enabling ATMs and online banking to function together, and healthcare systems managing patient data, billing, and inventory simultaneously.
+Disadvantages of Batch Systems
+
+Batch systems process jobs in groups without user interaction. A major disadvantage is that users cannot interact with the job once it’s submitted, which delays changes or corrections. For instance, in payroll systems, urgent updates to employee data cannot be applied immediately. Debugging is another challenge, as errors are only identified after the batch is processed, potentially delaying all tasks. Additionally, these systems may leave resources underutilized when jobs involve slow I/O operations, resulting in idle CPU time.
+Parallel vs. Distributed Systems
+
+Parallel systems involve multiple processors working on a single task simultaneously, often sharing memory and resources within a single system. An example is a supercomputer used for weather forecasting. Distributed systems, on the other hand, consist of independent systems working together over a network to solve problems, such as cloud platforms like AWS or Google Cloud. While parallel systems focus on speed and performance for a single task, distributed systems prioritize resource sharing and handling separate tasks.
+Hard vs. Soft Real-Time Systems
+
+In hard real-time systems, tasks must meet strict deadlines, and missing them can cause catastrophic failures. For example, aircraft control systems must respond instantly to ensure safety. In contrast, soft real-time systems aim to meet deadlines but are more flexible if some delays occur. An example is video streaming, where slight delays may lower quality but do not stop the service altogether.","""Compare and contrast parallel and distributed systems""","""Parallel Systems	Distributed Systems
+Multiple processors for one task.	Independent systems solving tasks.
+Shared memory or processors.	Connected via a network.
+Example: Supercomputers.	Example: Cloud services like AWS."""
+"Multiprogramming in Operating Systems
+
+Multiprogramming allows multiple programs to run simultaneously by switching between them to maximize CPU utilization. While one program is waiting (e.g., for I/O operations), the CPU can execute another program. This ensures the system is efficient and avoids CPU idle time. Examples of multiprogramming in real-world applications include web servers handling multiple user requests at once, banking systems enabling ATMs and online banking to function together, and healthcare systems managing patient data, billing, and inventory simultaneously.
+Disadvantages of Batch Systems
+
+Batch systems process jobs in groups without user interaction. A major disadvantage is that users cannot interact with the job once it’s submitted, which delays changes or corrections. For instance, in payroll systems, urgent updates to employee data cannot be applied immediately. Debugging is another challenge, as errors are only identified after the batch is processed, potentially delaying all tasks. Additionally, these systems may leave resources underutilized when jobs involve slow I/O operations, resulting in idle CPU time.
+Parallel vs. Distributed Systems
+
+Parallel systems involve multiple processors working on a single task simultaneously, often sharing memory and resources within a single system. An example is a supercomputer used for weather forecasting. Distributed systems, on the other hand, consist of independent systems working together over a network to solve problems, such as cloud platforms like AWS or Google Cloud. While parallel systems focus on speed and performance for a single task, distributed systems prioritize resource sharing and handling separate tasks.
+Hard vs. Soft Real-Time Systems
+
+In hard real-time systems, tasks must meet strict deadlines, and missing them can cause catastrophic failures. For example, aircraft control systems must respond instantly to ensure safety. In contrast, soft real-time systems aim to meet deadlines but are more flexible if some delays occur. An example is video streaming, where slight delays may lower quality but do not stop the service altogether.","""Describe hard real time system and soft real time system with suitable example""","""Hard Real-Time	Soft Real-Time
+Tasks must meet strict deadlines.	Deadlines can be missed occasionally.
+Example: Aircraft control.	Example: Video streaming."""
