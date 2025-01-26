@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QUESTED - Chat with PDFs</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="logo-placeholder.png" type="image/png" />
+
+    <style>
+                        /* Shared Styles */
+                        body {
+                          margin: 0;
+                          padding: 0;
+                          font-family: "Poppins", sans-serif;
+                          background: linear-gradient(120deg, #7a59ff, #63c5ff);
+                          color: white;
+                          min-height: 100vh;
+                        }
+
+                        /* Landing Page Styles */
+                        .landing-page {
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                          height: 100vh;
+                        }
+
+                        .card {
+                          background: rgba(255, 255, 255, 0.1);
+                          backdrop-filter: blur(10px);
+                          padding: 50px;
+                          border-radius: 20px;
+                          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                          text-align: center;
+                          width: 90%;
+                          max-width: 900px;
+                        }
+
+                        .logo {
+                          width: 250px;
+                          margin-bottom: 20px;
+                          animation: float 3s infinite ease-in-out;
+                        }
+
+                        h1 {
+                          font-size: 2.5rem;
+                          font-weight: bold;
+                          margin-bottom: 20px;
+                          background: linear-gradient(to right, #ffd700, #e28546);
+                          -webkit-background-clip: text; 
+                          -webkit-text-fill-color: transparent;
+                        }
+
+                        .start-button {
+                          background: linear-gradient(120deg, #ff7eb3, #ff758c);
+                          color: white;
+                          border: none;
+                          padding: 15px 30px;
+                          font-size: 1.2rem;
+                          border-radius: 50px;
+                          font-weight: bold;
+                          cursor: pointer;
+                          transition: all 0.3s ease;
+                          box-shadow: 0 5px 15px rgba(255, 121, 172, 0.4);
+                        }
+
+                        .start-button:hover {
+                          transform: translateY(-3px);
+                          box-shadow: 0 10px 20px rgba(255, 121, 172, 0.6);
+                        }
+
+                        /* Chat Page Styles */
+                        .chat-page {
+                          display: none;
+                          padding: 20px;
+                        }
+
+                        .chat-container {
+                          background: #fdfcfc;
+                          color: black;
+                          border-radius: 20px;
+                          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+                        }
+
+                        .chat-box {
+                          height: 350px;
+                          overflow-y: auto;
+                          background-color: #f9f9f9;
+                          border: 1px solid #ccc;
+                          border-radius: 10px;
+                          padding: 15px;
+                          margin-bottom: 10px;
+                        }
+
+                        .chat-message {
+                          display: flex;
+                          margin-bottom: 10px;
+                          max-width: 80%;
+                          padding: 10px;
+                          border-radius: 10px;
+                          line-height: 1.5;
+                        }
+
+                        .user-message {
+                          background-color: #7a59ff;
+                          color: white;
+                          align-self: flex-end;
+                          margin-left: auto;
+                        }
+
+                        .bot-message {
+                          background-color: #63c5ff;
+                          color: white;
+                          align-self: flex-start;
+                          margin-right: auto;
+                        }
+
+                        button.btn-primary {
+                          background: #7a59ff;
+                          border: none;
+                        }
+
+                        button.btn-primary:hover {
+                          background: #6b50e2;
+                        }
+
+                        button.btn-success {
+                          background: #067732;
+                          border: none;
+                        }
+
+                        button.btn-success:hover {
+                          background: #056326;
+                        }
+
+                        button.btn-danger {
+                          background: #ff416c;
+                          border: none;
+                        }
+
+                        button.btn-danger:hover {
+                          background: #e73e60;
+                        }
+
+                        input[type="file"],
+                        input[type="text"] {
+                          border-radius: 10px;
+                        }
+
+                        .disclaimer-text {
+        font-size: 1rem;
+        color: #ffd700; /* Yellow text */
+        background: rgba(255, 215, 0, 0.1); /* Light yellow background */
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: 1px solid #ffd700; /* Yellow border */
+        margin-top: 15px;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+      }
+
+
+                        /* Animations */
+                        @keyframes float {
+                          0%,
+                          100% {
+                            transform: translateY(0);
+                          }
+                          50% {
+                            transform: translateY(-10px);
+                          }
+                        }
+    </style>
+  </head>
+  <body>
+    <!-- Landing Page -->
+    <div class="landing-page" id="landingPage">
+      <div class="card">
+        <img src="logo.png" alt="Logo" class="logo" />
+        <h1>
+          Chat with your <span style="color: #f7d200">PDF</span> using
+          <span style="color: #ff758c">AI</span>
+        </h1>
+        <p>
+          Explore knowledge from your PDFs instantly with our easy-to-use chat
+          interface.
+        </p>
+        <button class="start-button" onclick="showChatPage()">
+          Start Chatting
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat Page -->
+    <div class="container chat-page" id="chatPage">
+      <div class="text-center">
+        <img src="logo.png" alt="Logo" class="logo" />
+        <h3>QA Chat with PDFs</h3>
+      </div>
+      <p id="disclaimer" class="disclaimer-text">
+        <strong>Disclaimer:</strong> This software uses AI and may sometimes
+        make mistakes. Please verify the answers with the original document.
+      </p>
+      <div class="chat-container bg-white p-4 rounded shadow position-relative">
+        <div id="chatBox" class="chat-box">
+          <!-- Chat messages will appear here -->
+        </div>
+
+        <form
+          class="mb-3 d-flex align-items-center gap-2"
+          onsubmit="event.preventDefault(); uploadPDF();"
+        >
+          <div class="col-md-7">
+            <input
+              type="file"
+              id="pdfFile"
+              name="file"
+              class="form-control"
+              accept="application/pdf"
+              multiple
+              required
+            />
+          </div>
+          <div class="col-md-3">
+            <button type="submit" class="btn btn-success w-100">
+              Upload PDFs
+            </button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-danger clear-button" onclick="clearChat()">
+              Clear All
+            </button>
+          </div>
+        </form>
+
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            id="question"
+            class="form-control"
+            placeholder="Ask a question"
+            onkeydown="if (event.key === 'Enter') askQuestion();"
+          />
+          <button
+            class="btn btn-primary"
+            id="askButton"
+            onclick="askQuestion()"
+          >
+            Ask
+          </button>
+        </div>
+        <div id="loadingMessage" class="text-center d-none">
+          Waiting for response...
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Toggle between landing page and chat page
+      function showChatPage() {
+        document.getElementById("landingPage").style.display = "none";
+        document.getElementById("chatPage").style.display = "block";
+      }
+
+      // Chat functionality (from the original chat code)
+      let combinedContext = ""; // To accumulate extracted text from PDFs
+
+      async function uploadPDF() {
+        const fileInput = document.getElementById("pdfFile");
+        const files = fileInput.files;
+
+        if (files.length === 0) {
+          return;
+        }
+
+        for (let i = 0; i < files.length; i++) {
+          const formData = new FormData();
+          formData.append("file", files[i]);
+
+          const response = await fetch("/upload", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await response.json();
+
+          if (data.context) {
+            combinedContext += "\n" + data.context;
+          }
+
+          addMessage(
+            "bot",
+            `Text from PDF: "${files[i].name}" has been extracted.`
+          );
+        }
+      }
+
+      async function askQuestion() {
+        if (combinedContext === "") {
+          addMessage("bot", "No context available. Please upload PDFs first.");
+          return;
+        }
+
+        const question = document.getElementById("question").value;
+        addMessage("user", question);
+
+        const response = await fetch("/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ context: combinedContext, question }),
+        });
+
+        const data = await response.json();
+        addMessage("bot", data.answer);
+      }
+
+      function addMessage(sender, message) {
+        const chatBox = document.getElementById("chatBox");
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add(
+          "chat-message",
+          sender === "user" ? "user-message" : "bot-message"
+        );
+        messageDiv.textContent = message;
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+
+      function clearChat() {
+        const chatBox = document.getElementById("chatBox");
+        chatBox.innerHTML = "";
+      }
+
+      async function askQuestion() {
+        const question = document.getElementById("question").value;
+
+        if (!question.trim()) {
+          addMessage("bot", "Please enter a question.");
+          return;
+        }
+
+        addMessage("user", question); // Add user question to the chat
+        document.getElementById("question").value = ""; // Clear the input field
+
+        // Add "Waiting for response..." to the chat
+        const waitingMessageId = `waiting-${Date.now()}`; // Unique ID for the waiting message
+        addMessage("bot", "Waiting for response...", waitingMessageId);
+
+        try {
+          const response = await fetch("/ask", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ context: combinedContext, question }),
+          });
+
+          const data = await response.json();
+
+          // Remove the waiting message
+          removeMessage(waitingMessageId);
+
+          // Add the bot's response to the chat
+          addMessage("bot", `${data.answer}`);
+        } catch (error) {
+          // Remove the waiting message and inform the user of the error
+          removeMessage(waitingMessageId);
+          addMessage(
+            "bot",
+            "An error occurred while processing your request. Please try again."
+          );
+        }
+      }
+
+      // Function to add messages to the chat
+      function addMessage(sender, message, id = null) {
+        const chatBox = document.getElementById("chatBox");
+        const messageDiv = document.createElement("div");
+
+        messageDiv.classList.add("chat-message");
+        messageDiv.classList.add(
+          sender === "user" ? "user-message" : "bot-message"
+        );
+        if (id) messageDiv.id = id; // Set the unique ID if provided
+        messageDiv.textContent = message;
+
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
+      }
+
+      // Function to remove a specific message from the chat
+      function removeMessage(id) {
+        const messageDiv = document.getElementById(id);
+        if (messageDiv) {
+          messageDiv.remove();
+        }
+      }
+      async function uploadPDF() {
+        const fileInput = document.getElementById("pdfFile");
+        const files = fileInput.files;
+
+        if (files.length === 0) {
+          return;
+        }
+
+        // Add "Waiting for file upload..." to the chat
+        const waitingMessageId = `waiting-upload-${Date.now()}`; // Unique ID for the waiting message
+        addMessage("bot", "Waiting for file upload...", waitingMessageId);
+
+        try {
+          // Loop through each uploaded file and send to the backend for extraction
+          for (let i = 0; i < files.length; i++) {
+            const formData = new FormData();
+            formData.append("file", files[i]);
+
+            const response = await fetch("/upload", {
+              method: "POST",
+              body: formData,
+            });
+
+            const data = await response.json();
+
+            // Add the extracted text from each PDF to the combined context
+            if (data.context) {
+              combinedContext += "\n" + data.context;
+              console.log(`Extracted text from PDF: "${files[i].name}"`);
+              console.log(data.context); // Log the extracted text to the console
+
+              // Display the file name in the chat
+              addMessage(
+                "bot",
+                `Text from PDF: "${files[i].name}" has been extracted.`
+              );
+            }
+          }
+        } catch (error) {
+          addMessage(
+            "bot",
+            "An error occurred during file upload. Please try again."
+          );
+        } finally {
+          // Remove the "Waiting for file upload..." message
+          removeMessage(waitingMessageId);
+        }
+      }
+
+      // Function to add messages to the chat
+      function addMessage(sender, message, id = null) {
+        const chatBox = document.getElementById("chatBox");
+        const messageDiv = document.createElement("div");
+
+        messageDiv.classList.add("chat-message");
+        messageDiv.classList.add(
+          sender === "user" ? "user-message" : "bot-message"
+        );
+        if (id) messageDiv.id = id; // Set the unique ID if provided
+        messageDiv.textContent = message;
+
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the latest message
+      }
+
+      // Function to remove a specific message from the chat
+      function removeMessage(id) {
+        const messageDiv = document.getElementById(id);
+        if (messageDiv) {
+          messageDiv.remove();
+        }
+      }
+    </script>
+  </body>
+</html>
