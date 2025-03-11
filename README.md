@@ -1,4 +1,4 @@
-QUSTED # AI-Powered Q&A System 
+## QUESTED AI-Powered Q&A System 
 
 ## Overview
 
